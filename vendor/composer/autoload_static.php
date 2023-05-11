@@ -42,10 +42,14 @@ class ComposerStaticInit6dcc398186d3952e3450708660b43b7d
         'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
         'Category' => __DIR__ . '/../..' . '/class/Category.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Controller' => __DIR__ . '/../..' . '/controller/Controller.php',
         'Ingredion' => __DIR__ . '/../..' . '/class/Ingredion.php',
+        'Model' => __DIR__ . '/../..' . '/model/Model.php',
+        'RecipeModel' => __DIR__ . '/../..' . '/model/RecipeModel.php',
         'Recipes' => __DIR__ . '/../..' . '/class/Recipes.php',
         'Recipes_ingredion' => __DIR__ . '/../..' . '/class/Recipes_ingredion.php',
         'User' => __DIR__ . '/../..' . '/class/User.php',
+        'VacheController' => __DIR__ . '/../..' . '/controller/VacheController.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -7,6 +7,7 @@ class Recipes{
     private $user_id;
     private $description;
     private $photo;
+    private $difficulty;
 
     public function __construct(array $datas){
         $this->hydrate($datas);
@@ -22,7 +23,7 @@ class Recipes{
         }
     }
 
-    public function setIdRecette(int $id_recette){
+    public function setId_recette(int $id_recette){
         $this->id_recette = $id_recette;
     }
     public function setTitle (string $title){
@@ -43,12 +44,15 @@ class Recipes{
     public function photo (string $photo){
         $this->photo = $photo;
     }
+    public function difficulty (string $difficulty){
+        $this->difficulty = $difficulty;
+    }
 
 
 
 
 
-    public function getIdRecette(){
+    public function getId_recette(){
         return $this->id_recette;
     }
     public function getTitle(){
@@ -68,5 +72,8 @@ class Recipes{
     }
     public function getPhoto(){
         return $this->photo;
+    }
+    public function getDifficulty(){
+        return $this->difficulty;
     }
 }

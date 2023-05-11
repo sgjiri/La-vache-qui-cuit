@@ -4,7 +4,7 @@ abstract class Model{
 
     private static function setDb(){
         try{
-            self::$db = new PDO('mysql:host=localhest; dbname=la vache qui cuit; charset=utf8, root');
+            self::$db = new PDO('mysql:host=localhost; dbname=vache; charset=utf8', 'root');
         }
         catch(PDOException $e){
             echo 'Erreur: ' . $e->getMessage();
