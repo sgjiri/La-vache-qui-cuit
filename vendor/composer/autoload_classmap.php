@@ -11,10 +11,13 @@ return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Controller' => $baseDir . '/controller/Controller.php',
     'Ingredion' => $baseDir . '/class/Ingredion.php',
+    'InsertRecipeModel' => $baseDir . '/model/InsertRecipeModel.php',
     'Model' => $baseDir . '/model/Model.php',
     'RecipeModel' => $baseDir . '/model/RecipeModel.php',
     'Recipes' => $baseDir . '/class/Recipes.php',
     'Recipes_ingredion' => $baseDir . '/class/Recipes_ingredion.php',
     'User' => $baseDir . '/class/User.php',
+    'UserController' => $baseDir . '/controller/UserController.php',
+    'UserModel' => $baseDir . '/model/UserModel.php',
     'VacheController' => $baseDir . '/controller/VacheController.php',
 );

@@ -3,9 +3,13 @@
 {% block title %} Bienvenue {% endblock %}
 
 {% block content %}
+
 <ul>
     {% for oneRamdomSimpleRecipe in ramdomSimpleRecipes %}
         <li><a href ='{{ link }}{{ oneRamdomSimpleRecipe.id_recette }}'>{{ oneRamdomSimpleRecipe.title }}</a></li>
     {% endfor %}
 </ul>
+
+<a href ='{{ linkNewRecipe }}'> Ajouter un recette<a>
+<a href ='{{ linkConnection }}'> Connection <a>
 {% endblock %}
