@@ -1,0 +1,29 @@
+{% extends "template.html.twig" %}
+{% block content %} Formulaire 
+
+<form action="{{ action }}addMyRecipe" method = "POST">
+    <label for='title'>Titre:</label>
+<input type = 'text' name = 'title'>
+
+<label for='duration'> Duration: </label>
+<input type='number' name='duration'> 
+
+<label for='description'> Description </label>
+<input type='text' name='description'>
+
+<label for='photo'> Photo </label>
+<input type='text' name='photo'>
+
+<label for='difficulty'> Dificulté </label>
+<select name='difficulty'>
+    <option class="select-text-blanc" value="">Choisisez...</option>
+    <option class="option" valeur="facile">facile</option>
+    <option class="option" valeur="moyen">moyen</option>
+    <option class="option" valeur="dificile">dificile</option>
+</select>
+
+<input type="submit" name="submit" value="Ajouter"></input>
+
+</form>
+
+{% endblock %}

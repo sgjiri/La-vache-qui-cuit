@@ -44,11 +44,14 @@ class ComposerStaticInit6dcc398186d3952e3450708660b43b7d
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Controller' => __DIR__ . '/../..' . '/controller/Controller.php',
         'Ingredion' => __DIR__ . '/../..' . '/class/Ingredion.php',
+        'InsertRecipeModel' => __DIR__ . '/../..' . '/model/InsertRecipeModel.php',
         'Model' => __DIR__ . '/../..' . '/model/Model.php',
         'RecipeModel' => __DIR__ . '/../..' . '/model/RecipeModel.php',
         'Recipes' => __DIR__ . '/../..' . '/class/Recipes.php',
         'Recipes_ingredion' => __DIR__ . '/../..' . '/class/Recipes_ingredion.php',
         'User' => __DIR__ . '/../..' . '/class/User.php',
+        'UserController' => __DIR__ . '/../..' . '/controller/UserController.php',
+        'UserModel' => __DIR__ . '/../..' . '/model/UserModel.php',
         'VacheController' => __DIR__ . '/../..' . '/controller/VacheController.php',
     );
 

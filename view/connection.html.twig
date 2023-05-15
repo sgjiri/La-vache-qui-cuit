@@ -1,0 +1,14 @@
+{% extends "template.html.twig" %}
+{% block content %}
+<h2>Connection</h2>
+<form action="{{ action }}connection" method="POST">
+    <label for="pseudo">Pseudo</label>
+    <input type="text" name = "pseudo">
+    <label for="password">Mot de passe</label>
+    <input type="text" name = "password">
+    <input type="submit" name="connection" value="Me connecter"> 
+</form>
+
+
+
+{% endblock %}
