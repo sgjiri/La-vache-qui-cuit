@@ -11,8 +11,11 @@ $router->map('GET', '/recipe/[i:id_recette]', 'VacheController#getOne', 'getOneR
 $router->map('GET', '/addNewRecipe', 'VacheController#addRecipe', 'addNewRecipe');
 
 //conection
-$router->map('GET', '/conection',  'UserController#connectionPage', 'connectionPage');
-$router->map('POST', '/connection', 'UserController#connection', 'connection');
+$router->map('GET|POST', '/connection', 'UserController#connection', 'connection');
+
+
+//iscription
+$router->map('GET|POST', '/inscription', 'UserController#inscription', 'inscription');
 
 //Recuperation des informations de formulaire de insertion de recettes
 $router->map('POST', '/addMyRecipe', 'VacheController#addMyRecipe', 'addMyRecipe');

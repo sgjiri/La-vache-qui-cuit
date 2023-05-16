@@ -3,14 +3,16 @@ class VacheController extends Controller
 {
     public function homePage()
     {
+        session_start();
         global $router;
         $model = new RecipeModel();
         $datas = $model->getForSimpleRecipes();
         $twig = $this->getTwig();
         $link = $router->generate('detaileRecipe');
         $linkNewRecipe = $router->generate('addNewRecipe');
-        $linkConnection = $router->generate('connectionPage');
-        echo $twig->render('homePage.html.twig', ['ramdomSimpleRecipes' => $datas, 'link' => $link, 'linkNewRecipe' => $linkNewRecipe, 'linkConnection' => $linkConnection]);
+        $linkConnection = $router->generate('connection');
+        $linkInscription = $router->generate('inscription');
+        echo $twig->render('homePage.html.twig', ['ramdomSimpleRecipes' => $datas, 'link' => $link, 'linkNewRecipe' => $linkNewRecipe, 'linkConnection' => $linkConnection, 'linkInscription' => $linkInscription]);
     }
 
     public function getOne($id_recette)
@@ -24,6 +26,7 @@ class VacheController extends Controller
 
     public function addRecipe()
     {
+        session_start();
         global $router;
         $link = $router->generate('addMyRecipe');
         var_dump($link);
@@ -33,7 +36,7 @@ class VacheController extends Controller
 
     public function addMyRecipe()
     {
-
+        session_start();
         if (isset($_POST['submit'])) {
             $title = addslashes($_POST['title']);
             $duration = addslashes($_POST['duration']);
