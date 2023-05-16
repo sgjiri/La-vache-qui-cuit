@@ -1,0 +1,15 @@
+{% extends "template.html.twig" %}
+{% block content %}
+<h2>Formulaire d'inscription</h2>
+<form action="{{ action }}inscription" method="POST">
+    <label for="pseudo">Choisisez votre pseudo</label>
+    <input type="text" name = "pseudo">
+    <label for="mail"> Saisissez votre e-mail</label>
+    <input type="text" name="mail">
+    <label for="password"> Choisisez votre mot de passe</label>
+    <input type="text" name='password'>
+    <label for="password2"> Repetez mot de passe</label>
+    <input type="text" name='password2'>
+    <input type="submit" name="inscription" value="s'inscrir">
+</form>
+{% endblock %}

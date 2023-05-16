@@ -8,4 +8,13 @@ class UserModel extends Model{
         return $req;
 
     }
+
+    public function inscription($pseudo, $mail, $passwordHashed){
+        $req = $this->getDB()->prepare("INSERT INTO `user` (`pseudo`, `mail`,`password`) VALUE (:pseudo, :mail, :password)");
+        $req->bindParam('pseudo', $pseudo, PDO::PARAM_STR);
+        $req->bindParam('mail', $mail, PDO::PARAM_STR);
+        $req->bindParam('password', $passwordHashed, PDO::PARAM_STR);
+        $req->execute();
+
+    }
 }
