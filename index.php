@@ -12,6 +12,8 @@ $router->map('GET', '/addNewRecipe', 'VacheController#addRecipe', 'addNewRecipe'
 
 //conection
 $router->map('GET|POST', '/connection', 'UserController#connection', 'connection');
+//deconectioon
+$router->map('GET', '/deconnection', 'UserController#deconnection', 'deconnection');
 
 
 //iscription
