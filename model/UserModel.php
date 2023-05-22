@@ -5,7 +5,7 @@ class UserModel extends Model{
         $req->bindParam('pseudo', $pseudo, PDO::PARAM_STR);
         $req->execute();
 
-        return $req;
+        return $req->rowCount() == 1 ? new User($req->fetch(PDO::FETCH_ASSOC)) : false;
 
     }
 

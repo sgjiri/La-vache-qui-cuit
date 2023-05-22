@@ -4,6 +4,7 @@ abstract class Controller{
 
     private static $loader;
     private static $twig;
+    private static $render;
 
     private static function setLoader(){
         self::$loader = new \Twig\Loader\FilesystemLoader('./view');
@@ -13,6 +14,29 @@ abstract class Controller{
         self::$twig = new \Twig\Environment(self::getLoader(),['cache' => false]);
     }
 
+    private static function setRender (string $template, $datas){
+        global $router;
+        $link = $router->generate('detaileRecipe');
+        $linkNewRecipe = $router->generate('addNewRecipe');
+        $linkConnection = $router->generate('connection');
+        $linkInscription = $router->generate('inscription');
+
+        $new = [
+            'link' => $link,
+            'linkNewRecipe' => $linkNewRecipe,
+            'linkConnection' => $linkConnection,
+            'linkInscription' => $linkInscription
+        ] + $datas;
+        echo self::getTwig()->render($template, $new);     
+    }
+
+    protected static function getRender($template, $datas)
+    {
+        if (self::$render === null) {
+            self::setRender($template, $datas);
+        }
+        return self::$render;
+    }
     protected static function getLoader()
     {
         if (self::$loader === null){

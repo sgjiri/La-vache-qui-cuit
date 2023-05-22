@@ -7,30 +7,23 @@ class VacheController extends Controller
         global $router;
         $model = new RecipeModel();
         $datas = $model->getForSimpleRecipes();
-        $twig = $this->getTwig();
-        $link = $router->generate('detaileRecipe');
-        $linkNewRecipe = $router->generate('addNewRecipe');
-        $linkConnection = $router->generate('connection');
-        $linkInscription = $router->generate('inscription');
-        echo $twig->render('homePage.html.twig', ['ramdomSimpleRecipes' => $datas, 'link' => $link, 'linkNewRecipe' => $linkNewRecipe, 'linkConnection' => $linkConnection, 'linkInscription' => $linkInscription]);
+       
+        echo self::getRender('homePage.html.twig', ['ramdomSimpleRecipes' => $datas]);
     }
 
     public function getOne($id_recette)
     {
         $model = new RecipeModel();
         $recipe = $model->getOneRecipe($id_recette);
-        $twig = $this->getTwig();
 
-        echo $twig->render('OneRecipe.html.twig', ['recipe' => $recipe]);
+        echo self::getRender('OneRecipe.html.twig', ['recipe' => $recipe]);
     }
 
     public function addRecipe()
     {
         session_start();
         global $router;
-        $link = $router->generate('addMyRecipe');
-        var_dump($link);
-        echo $this->getTwig()->render('newrecipe.html.twig', ['link' => $link]);
+        echo self::getRender('newrecipe.html.twig', []);
         
     }
 
@@ -43,8 +36,10 @@ class VacheController extends Controller
             $description = addslashes($_POST['description']);
             $photo = addslashes($_POST['photo']);
             $difficulty = addslashes($_POST['difficulty']);
+            $id_user = $_SESSION['id-user'];
+            var_dump($id_user);
             $model = new InsertRecipeModel;
-            $model->InsertRecipe($title, $duration, $description, $photo, $difficulty);
+            $model->InsertRecipe($title, $duration, $description, $photo, $difficulty, $id_user);//$name
         }
     }
 

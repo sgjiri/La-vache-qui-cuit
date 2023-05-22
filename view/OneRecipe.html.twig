@@ -1,4 +1,6 @@
-{% extends "template.html.twig" %}
+{% block header %}
+    {% include 'header.html.twig' %}
+{% endblock %}
 {% block content %}
 <h1> {{recipe.title}} </h1>
 {% endblock %}
