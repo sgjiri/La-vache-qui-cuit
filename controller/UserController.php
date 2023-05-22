@@ -22,9 +22,12 @@ class UserController extends Controller
                     $_SESSION['pseudo'] = $datas->getPseudo();
                     $_SESSION['mail'] = $datas->getMail();
                     $_SESSION['connect'] = true;
-                    $passwordHash = $datas->getPassword();                
+                    $connection = $_SESSION['connect'];
+                    $passwordHash = $datas->getPassword();               
                     if(password_verify($password, $passwordHash)){
                         var_dump($datas);
+
+                    echo self::getRender('connection.html.twig', ['connection' => $connection ]);
                     }
                 
             }
@@ -52,5 +55,14 @@ class UserController extends Controller
         } else {
             echo self::getRender('inscription.html.twig', []);
         }
+    }
+
+    public function deconnection(){
+        session_start();
+        session_unset();
+        $_SESSION['connect'] = false;
+        session_destroy();
+        
+
     }
 }

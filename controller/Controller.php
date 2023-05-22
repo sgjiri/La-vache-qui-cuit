@@ -17,15 +17,19 @@ abstract class Controller{
     private static function setRender (string $template, $datas){
         global $router;
         $link = $router->generate('detaileRecipe');
+        $linkHome = $router->generate('home');
         $linkNewRecipe = $router->generate('addNewRecipe');
         $linkConnection = $router->generate('connection');
+        $linkDeconnection = $router->generate('deconnection');
         $linkInscription = $router->generate('inscription');
 
         $new = [
             'link' => $link,
             'linkNewRecipe' => $linkNewRecipe,
             'linkConnection' => $linkConnection,
-            'linkInscription' => $linkInscription
+            'linkInscription' => $linkInscription,
+            'linkDeconnection' => $linkDeconnection,
+            'linkHome' => $linkHome
         ] + $datas;
         echo self::getTwig()->render($template, $new);     
     }
@@ -49,6 +53,12 @@ abstract class Controller{
         if(self::$twig === null){
             self::setTwig();
         }
+        if(isset($_SESSION['connect'])){
+        self::$twig->addGlobal('session', $_SESSION);
+        self::$twig->addGlobal('get', $_GET);
+        }
+        
+        
         return self::$twig;
     }
     

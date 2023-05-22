@@ -7,8 +7,13 @@ class VacheController extends Controller
         global $router;
         $model = new RecipeModel();
         $datas = $model->getForSimpleRecipes();
-       
-        echo self::getRender('homePage.html.twig', ['ramdomSimpleRecipes' => $datas]);
+        if (isset($_SESSION['connect'])) {
+            $connection = $_SESSION['connect'];
+            echo self::getRender('homePage.html.twig', ['ramdomSimpleRecipes' => $datas, 'connection' => $connection]);
+            var_dump($_SESSION['pseudo']);
+        } else {
+            echo self::getRender('homePage.html.twig', ['ramdomSimpleRecipes' => $datas]);
+        }
     }
 
     public function getOne($id_recette)
@@ -23,9 +28,13 @@ class VacheController extends Controller
     {
         session_start();
         global $router;
-        echo self::getRender('newrecipe.html.twig', []);
         
-    }
+        if (isset($_SESSION['connect'])){
+            $connection = $_SESSION['connect'];
+            echo self::getRender('newrecipe.html.twig', [ 'connection' => $connection]);
+    }else {
+        echo self::getRender('newrecipe.html.twig', []);
+    }}
 
     public function addMyRecipe()
     {
@@ -39,7 +48,7 @@ class VacheController extends Controller
             $id_user = $_SESSION['id-user'];
             var_dump($id_user);
             $model = new InsertRecipeModel;
-            $model->InsertRecipe($title, $duration, $description, $photo, $difficulty, $id_user);//$name
+            $model->InsertRecipe($title, $duration, $description, $photo, $difficulty, $id_user); //$name
         }
     }
 
