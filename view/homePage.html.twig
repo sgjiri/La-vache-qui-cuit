@@ -1,6 +1,8 @@
-{% extends "template.html.twig" %}
 
-{% block title %} Bienvenue {% endblock %}
+{% block header %}
+    {% include 'header.html.twig' %}
+{% endblock %}
+
 
 {% block content %}
 
@@ -10,7 +12,4 @@
     {% endfor %}
 </ul>
 
-<a href ='{{ linkNewRecipe }}'> Ajouter un recette<a>
-<a href ='{{ linkConnection }}'> Connection <a>
-<a href ='{{ linkInscription }}'> Inscription <a>
 {% endblock %}

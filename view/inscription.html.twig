@@ -1,4 +1,6 @@
-{% extends "template.html.twig" %}
+{% block header %}
+    {% include 'header.html.twig' %}
+{% endblock %}
 {% block content %}
 <h2>Formulaire d'inscription</h2>
 <form action="{{ action }}inscription" method="POST">

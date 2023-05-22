@@ -17,23 +17,19 @@ class UserController extends Controller
             $model = new UserModel;
             $datas = $model->authentification($pseudo);
 
-            if ($datas->rowCount() == 1) {
-                $user = $datas->fetch(PDO::FETCH_ASSOC);
-                
-                    $_SESSION['id-user'] = $user['id_user'];
-                    $_SESSION['pseudo'] = $user['pseudo'];
-                    $_SESSION['mail'] = $user['mail'];
+            if ($datas) {                
+                    $_SESSION['id-user'] = $datas->getId_user();
+                    $_SESSION['pseudo'] = $datas->getPseudo();
+                    $_SESSION['mail'] = $datas->getMail();
                     $_SESSION['connect'] = true;
-                    $passwordHash = $user['password'];                
+                    $passwordHash = $datas->getPassword();                
                     if(password_verify($password, $passwordHash)){
-                        var_dump($user['pseudo']);
+                        var_dump($datas);
                     }
                 
             }
         } else {
-            global $router;
-            $link = $router->generate('connection');
-            echo $this->getTwig()->render('connection.html.twig', ['link' => $link]);
+            echo self::getRender('connection.html.twig', []);
         }
     }
 
@@ -54,8 +50,7 @@ class UserController extends Controller
                 echo 'Les mots de passes ne sont pas identique';
             }
         } else {
-            var_dump($_SESSION['pseudo']);
-            echo $this->getTwig()->render('inscription.html.twig');
+            echo self::getRender('inscription.html.twig', []);
         }
     }
 }
