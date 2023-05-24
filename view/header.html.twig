@@ -2,11 +2,13 @@
 {% block title %} Bienvenue {% endblock %}
 {% block content %}
 <a href ='{{ linkHome }}'> Accueil </a>
-{% if connection == false %}
-<a href ='{{ linkConnection }}'> Connection </a>
-<a href ='{{ linkInscription }}'> Inscription </a>
-{% else %}
+{% if session.connect is defined and session.connect == true %}
+
 <a href ='{{ linkDeconnection }}'> Deconnexion </a>
 <a href ='{{ linkNewRecipe }}'> Ajouter un recette</a>
+{% else %}
+<a href ='{{ linkConnection }}'> Connection </a>
+<a href ='{{ linkInscription }}'> Inscription </a>
+
 {% endif %}
 {% endblock %}

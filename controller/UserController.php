@@ -9,27 +9,22 @@ class UserController extends Controller
     public function connection()
     {
         if (isset($_POST['connection'])) {
-            session_start();
-
             $pseudo = $_POST['pseudo'];
             $password = $_POST['password'];
 
             $model = new UserModel;
             $datas = $model->authentification($pseudo);
 
-            if ($datas) {                
+            if ($datas) {
+
+                $passwordHash = $datas->getPassword();
+                if (password_verify($password, $passwordHash)) {
+                    var_dump($datas);
                     $_SESSION['id-user'] = $datas->getId_user();
                     $_SESSION['pseudo'] = $datas->getPseudo();
                     $_SESSION['mail'] = $datas->getMail();
                     $_SESSION['connect'] = true;
-                    $connection = $_SESSION['connect'];
-                    $passwordHash = $datas->getPassword();               
-                    if(password_verify($password, $passwordHash)){
-                        var_dump($datas);
-
-                    echo self::getRender('connection.html.twig', ['connection' => $connection ]);
-                    }
-                
+                }
             }
         } else {
             echo self::getRender('connection.html.twig', []);
@@ -38,7 +33,6 @@ class UserController extends Controller
 
     public function inscription()
     {
-        session_start();
         if (isset($_POST['inscription'])) {
             $pseudo = $_POST['pseudo'];
             $mail = $_POST['mail'];
@@ -57,12 +51,9 @@ class UserController extends Controller
         }
     }
 
-    public function deconnection(){
-        session_start();
-        session_unset();
+    public function deconnection()
+    {
         $_SESSION['connect'] = false;
         session_destroy();
-        
-
     }
 }

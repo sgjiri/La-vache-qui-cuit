@@ -8,7 +8,7 @@ $router->setBasePath('/Projet/La-vache-qui-cuit');
 $router->map( 'GET', '/', 'VacheController#homePage', 'home');
 $router->map('GET', '/recipe/','', 'detaileRecipe');
 $router->map('GET', '/recipe/[i:id_recette]', 'VacheController#getOne', 'getOneRecipe');
-$router->map('GET', '/addNewRecipe', 'VacheController#addRecipe', 'addNewRecipe');
+$router->map('GET|POST', '/addNewRecipe', 'VacheController#addRecipe', 'addNewRecipe');
 
 //conection
 $router->map('GET|POST', '/connection', 'UserController#connection', 'connection');
@@ -20,7 +20,7 @@ $router->map('GET', '/deconnection', 'UserController#deconnection', 'deconnectio
 $router->map('GET|POST', '/inscription', 'UserController#inscription', 'inscription');
 
 //Recuperation des informations de formulaire de insertion de recettes
-$router->map('POST', '/addMyRecipe', 'VacheController#addMyRecipe', 'addMyRecipe');
+
 
 
 $match = $router->match();

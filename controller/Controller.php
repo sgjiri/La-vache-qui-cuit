@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 abstract class Controller{
 
@@ -29,13 +30,14 @@ abstract class Controller{
             'linkConnection' => $linkConnection,
             'linkInscription' => $linkInscription,
             'linkDeconnection' => $linkDeconnection,
-            'linkHome' => $linkHome
+            'linkHome' => $linkHome,
         ] + $datas;
         echo self::getTwig()->render($template, $new);     
     }
 
     protected static function getRender($template, $datas)
     {
+        
         if (self::$render === null) {
             self::setRender($template, $datas);
         }
@@ -54,6 +56,7 @@ abstract class Controller{
             self::setTwig();
         }
         if(isset($_SESSION['connect'])){
+
         self::$twig->addGlobal('session', $_SESSION);
         self::$twig->addGlobal('get', $_GET);
         }
