@@ -8,3 +8,10 @@ a {
 h1{
     color: orange;
 }
+.step {
+    display: none;
+    &.active {
+        display: block;
+      }
+}
+  

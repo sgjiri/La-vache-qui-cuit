@@ -3,17 +3,13 @@ class VacheController extends Controller
 {
     public function homePage()
     {
-        session_start();
         global $router;
         $model = new RecipeModel();
         $datas = $model->getForSimpleRecipes();
         if (isset($_SESSION['connect'])) {
-            $connection = $_SESSION['connect'];
-            echo self::getRender('homePage.html.twig', ['ramdomSimpleRecipes' => $datas, 'connection' => $connection]);
             var_dump($_SESSION['pseudo']);
-        } else {
-            echo self::getRender('homePage.html.twig', ['ramdomSimpleRecipes' => $datas]);
         }
+            echo self::getRender('homePage.html.twig', ['ramdomSimpleRecipes' => $datas]);
     }
 
     public function getOne($id_recette)
@@ -26,19 +22,6 @@ class VacheController extends Controller
 
     public function addRecipe()
     {
-        session_start();
-        global $router;
-        
-        if (isset($_SESSION['connect'])){
-            $connection = $_SESSION['connect'];
-            echo self::getRender('newrecipe.html.twig', [ 'connection' => $connection]);
-    }else {
-        echo self::getRender('newrecipe.html.twig', []);
-    }}
-
-    public function addMyRecipe()
-    {
-        session_start();
         if (isset($_POST['submit'])) {
             $title = addslashes($_POST['title']);
             $duration = addslashes($_POST['duration']);
@@ -48,9 +31,15 @@ class VacheController extends Controller
             $id_user = $_SESSION['id-user'];
             var_dump($id_user);
             $model = new InsertRecipeModel;
-            $model->InsertRecipe($title, $duration, $description, $photo, $difficulty, $id_user); //$name
-        }
-    }
+            $model->InsertRecipe($title, $duration, $description, $photo, $difficulty, $id_user); 
+            echo 'Ajout du recette reusit';
+            
+            
+        }else {
+        var_dump($_SESSION['id-user']);
+        echo self::getRender('newrecipe.html.twig', []);
+    }}
+
 
     // public function homePage(){
     //     $model = new RecipeModel();

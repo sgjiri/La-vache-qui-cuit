@@ -1,9 +1,11 @@
-{% block header %}
+{# {% block header %}
     {% include 'header.html.twig' %}
 {% endblock %}
 {% block content %} Formulaire 
 
-<form action="{{ action }}addMyRecipe" method = "POST">
+
+{% if !(isset($_POST['submit'])) %}
+<form action="{{ action }}addNewRecipe" method = "POST">
     <label for='title'>Titre:</label>
 <input type = 'text' name = 'title'>
 
@@ -27,5 +29,95 @@
 <input type="submit" name="submit" value="Ajouter"></input>
 
 </form>
+{% else %}
+{% endif %}
 
+{% endblock %} #}
+
+
+{% block header %}
+    {% include 'header.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    Formulaire
+
+    
+        <form action="{{ action }}addNewRecipe" method="POST">
+        <div class="step active" id="step-1">
+            <label for="title">Titre:</label>
+            <input type="text" name="title">
+
+            <label for="duration">Duration:</label>
+            <input type="number" name="duration">
+
+            <label for="description">Description</label>
+            <input type="text" name="description">
+
+            <label for="photo">Photo</label>
+            <input type="text" name="photo">
+
+            <label for="difficulty">Difficulté</label>
+            <select name="difficulty">
+                <option class="select-text-blanc" value="">Choisissez...</option>
+                <option class="option" value="facile">facile</option>
+                <option class="option" value="moyen">moyen</option>
+                <option class="option" value="difficile">difficile</option>
+            </select>
+            <button onclick="nextStep(2)">Suivant</button>
+        </div>
+            <div class="step" id="step-2">
+                <h1>Étape 2</h1>
+                <input type="text" name="field2" placeholder="Champ 2" required>
+      <button onclick="prevStep(1)">Précédent</button>
+      <input type="submit" name="submit" value="Ajouter">
+    </div>
+
+
+
+
+
+
+
+        </form>
+
+    {% if app.request.request.has('submit')%}
+    coucou
+    {% endif %}
+
+    <script>
+    var currentStep = 1;
+    var form = document.getElementById('multi-step-form');
+
+    function showStep(step) {
+      document.getElementById('step-' + step).classList.add('active');
+    }
+
+    function hideStep(step) {
+      document.getElementById('step-' + step).classList.remove('active');
+    }
+
+    function nextStep(next) {
+      hideStep(currentStep);
+      showStep(next);
+      currentStep = next;
+    }
+
+    function prevStep(prev) {
+      hideStep(currentStep);
+      showStep(prev);
+      currentStep = prev;
+    }
+
+    function validateForm() {
+      // Ajoutez ici votre logique de validation du formulaire complet
+      // Par exemple, vous pouvez vérifier les champs requis
+
+      // Une fois que le formulaire est validé, vous pouvez soumettre les données via AJAX ou rediriger l'utilisateur vers une autre page.
+      alert('Formulaire soumis avec succès !');
+    }
+
+    showStep(currentStep);
+  </script>
+    
 {% endblock %}
