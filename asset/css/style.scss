@@ -8,10 +8,15 @@ a {
 h1{
     color: orange;
 }
-.step {
+.step{
     display: none;
     &.active {
         display: block;
       }
+}
+
+.ingredient{
+    height: 200px;
+    width: 80%;
 }
   

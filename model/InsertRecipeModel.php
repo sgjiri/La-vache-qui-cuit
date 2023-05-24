@@ -2,7 +2,7 @@
 
 class InsertRecipeModel extends Model{
 
-    public function InsertRecipe($title, $duration, $description, $photo, $difficulty, $id_user){
+    public function InsertRecipe($title, $duration, $description, $photo, $difficulty, $id_user, $quantity, $unity, $ingredient){
 
         //insert recette
         $req = $this->getDB()->prepare('INSERT INTO `recipes` (`title`,`duration`,`description`,`photo`, `difficulty`, `user_id`, `creation`) VALUE (:title, :duration, :description, :photo, :difficulty, :user_id, NOW() )');
@@ -13,6 +13,9 @@ class InsertRecipeModel extends Model{
         $req->bindParam('photo', $photo, PDO::PARAM_STR);
         $req->bindParam('difficulty', $difficulty, PDO::PARAM_STR);
         $req->bindParam('user_id', $id_user, PDO::PARAM_STR);
+        $req->bindParam('quantity', $quantity, PDO::PARAM_STR);
+        $req->bindParam('unity', $unity, PDO::PARAM_STR);
+        $req->bindParam('$ingredient', $ingredient, PDO::PARAM_STR);
         $req->execute();
 
 

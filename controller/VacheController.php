@@ -21,7 +21,7 @@ class VacheController extends Controller
     }
 
     public function addRecipe()
-    {
+    {   
         if (isset($_POST['submit'])) {
             $title = addslashes($_POST['title']);
             $duration = addslashes($_POST['duration']);
@@ -29,14 +29,17 @@ class VacheController extends Controller
             $photo = addslashes($_POST['photo']);
             $difficulty = addslashes($_POST['difficulty']);
             $id_user = $_SESSION['id-user'];
+            $quantity = addslashes($_POST['quantity']);
+            $unity = addslashes($_POST['unity']);
+            $ingredient =addslashes($_POST['ingredient']);
             var_dump($id_user);
             $model = new InsertRecipeModel;
-            $model->InsertRecipe($title, $duration, $description, $photo, $difficulty, $id_user); 
+            $model->InsertRecipe($title, $duration, $description, $photo, $difficulty, $id_user, $quantity, $unity, $ingredient); 
             echo 'Ajout du recette reusit';
             
             
         }else {
-        var_dump($_SESSION['id-user']);
+        // var_dump($_SESSION['id-user']);
         echo self::getRender('newrecipe.html.twig', []);
     }}
 
