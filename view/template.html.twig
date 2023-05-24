@@ -11,12 +11,11 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-{% block content %}
-
-
-
-
-
+{% block header %}{% endblock %}
+{% block content %}{% endblock %}
+{% block js %}
 {% endblock %}
+
+<script src="{{style}}js/newrecipe.js"></script>
 </body>
 </html>
