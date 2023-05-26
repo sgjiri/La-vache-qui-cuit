@@ -10,44 +10,47 @@
 	<form action="{{ action }}addNewRecipe" method="POST" id="form">
 		<div class="step active" id="step-1">
 			<label for="title">Titre:</label>
-			<input type="text" name="title" >
+			<input type="text" name="title" id="title" required>
 
 			<label for="duration">Duration:</label>
-			<input type="number" name="duration" required>
+			<input type="number" name="duration" id="duration">
 
 			<label for="description">Description</label>
-			<input type="text" name="description" required>
+			<input type="text" name="description" id="description">
 
 			<label for="photo">Photo</label>
-			<input type="text" name="photo" >
+			<input type="text" name="photo" id="photo">
 
 			<label for="difficulty">Difficulté</label>
-			<select name="difficulty" >
+			<select name="difficulty" id="difficulty">
 				<option class="select-text-blanc" value="">Choisissez...</option>
 				<option class="option" value="facile">facile</option>
 				<option class="option" value="moyen">moyen</option>
 				<option class="option" value="difficile">difficile</option>
 			</select>
-			<button id="test">Suivant</button>
+			<button id="nextForm">Suivant</button>
 		</div>
 		<div class="step" id="step-2">
 			<h1>Étape 2</h1>
-			<label for="quantity">Quantité</label>
-			<input type="number" name="quantity" placeholder="Quantité" >
-			<label for="unity">Unité</label>
-			<input type="text" name="unity" placeholder="Unité" >
-			<label for="ingredient">Ingredient</label>
-			<input type="text" name="ingredient" placeholder="Ingredient">
-			
-			<button id="buttonIngredient">test
+			<div id="QUI">
+				<div>
+					<label for="quantity">Quantité:</label>
+					<input type="number" name="quantity" placeholder="Quantité" id="quantity">
+					<label for="unity">Unité:</label>
+					<input type="text" name="unity" placeholder="Unité" id="unity">
+					<label for="ingredient">Ingredient:</label>
+					<input type="text" name="ingredient" placeholder="Ingredient" id="ingredient">
+				</div>
+			</div>
+			<button id="buttonIngredient">Ajouter un ingredient
 			</button>
 			<br>
-			<button>Précédent</button>
+			<button id="btnPrecedent">Précédent</button>
 			<input type="submit" name="submit" value="Valider">
 		</div>
 	</form>
 {% endblock %}
 
-{% block js %}<script src="{{style}}js/ingredient.js"></script>
+{% block js %}
+	<script src="{{style}}js/ingredient.js"></script>
 {% endblock %}
-
